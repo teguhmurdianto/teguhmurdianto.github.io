@@ -184,9 +184,9 @@
 		-webkit-transform: translate3d(0,0,0);
 		-ms-transform: translate3d(0,0,0);
 		transform: translate3d(0,0,0);
-	/* Set your background with this */
 
-		background: #348cb2 url("images/bg.jpg") bottom left;
+	/* Set your background with this */
+		background: rgb(171, 174, 176) url("images/bg.jpg") bottom left;
 		background-repeat: repeat-x;
 		height: 100%;
 		left: 0;
