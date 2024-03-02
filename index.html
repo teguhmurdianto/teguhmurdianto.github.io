@@ -75,6 +75,12 @@
 		const body = document.querySelector('body');
 		const profile = document.getElementById('profile');
 		toggle.addEventListener('click', () => {
+			dataLayer.push({
+				'event': 'change-theme',
+				'event category': 'ui-change',
+				'event action': 'click',
+				'event label': 'click-change-theme',
+			});
 		  if (body.classList.contains('text-gray-900')) {
 			toggle.innerHTML = "☀️";
 			body.classList.remove('text-gray-900');
