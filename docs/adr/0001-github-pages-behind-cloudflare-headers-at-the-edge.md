@@ -14,5 +14,5 @@ preview links, and a local preview covers that for a personal site.
 ## Consequences
 
 - The header rules live in the Cloudflare dashboard, not in this repo. Their exact contents are written
-  down in the repo docs, and the pre-deploy checks compare the live headers with them.
+  down in the repo docs, and a check after each deploy compares the live headers with them.
 - Rollback is `git revert` and push.

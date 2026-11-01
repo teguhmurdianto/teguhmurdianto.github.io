@@ -1,9 +1,7 @@
-# PRD — tmurdianto.com v0
+# PRD: tmurdianto.com v0
 
 Status: intake (grill-me, 2026-10-31); design settled (grill-with-docs, 2026-10-31). Terms follow
-`CONTEXT.md`; hard-to-reverse decisions are ADR-0001 to ADR-0003 in `docs/adr/`. The
-working tree holds an unpushed pilot (home page on the Drawing Set design, Creative Toddler at
-`/fun/creative-toddler/`). The pilot is a prototype for the grill to judge, not the decided architecture.
+`CONTEXT.md`; hard-to-reverse decisions are ADR-0001 to ADR-0003 in `docs/adr/`.
 
 ## Problem Statement
 
@@ -20,10 +18,10 @@ is built the way it is.
 
 Rebuild tmurdianto.com as Teguh's branded home and as a host for any page he makes.
 
-- The home page carries the agreed brand: **"I build the foundations teams depend on."** It shows the
-  work, the writing and the fun pages, with Teguh in the title block rather than as a hero.
-- Every page Teguh owns follows one design system, `DESIGN.md` ("Drawing Set": an engineer's drawing
-  set, dark mode as the blueprint).
+- The home page carries the agreed brand: **"I build the foundations teams depend on."** It opens on
+  a portrait-led Hero, then shows the work, the writing and the fun pages on one page.
+- Every page Teguh owns follows one design system, `DESIGN.md` ("Poster": green and yellow fields, big
+  type, and text that wraps along the portrait's outline).
 - Hosted pages, such as games and tools built in their own repos, are published under a section path
   (`/fun/creative-toddler/`) and keep their own look.
 - Adding a page is a short, documented routine with checks before anything goes live.
@@ -75,7 +73,7 @@ Rebuild tmurdianto.com as Teguh's branded home and as a host for any page he mak
 ### Already decided
 - **Brand and copy** come from the agreed brand (vault, 2026-10-31). Copy is British English, plain and
   first person, and goes through a humanizer pass before it is published.
-- **Look**: `DESIGN.md` "Drawing Set" (lints with 0 errors, 0 warnings). Hosted pages keep their own look.
+- **Look**: `DESIGN.md` "Poster", chosen by the owner from prototypes at phone and desktop width. Hosted pages keep their own look.
 - **URL shape**: hosted pages live under a section path; the first is `/fun/creative-toddler/`.
 - **Public safety**: no employer internals, client details, personal contact details beyond email, or
   job-search signals. Creative Toddler is shown only as a game built with agentic AI.
@@ -89,16 +87,16 @@ Rebuild tmurdianto.com as Teguh's branded home and as a host for any page he mak
 | O1 | Host | ✅ GitHub Pages behind Cloudflare, headers at Cloudflare (ADR-0001) | — |
 | O2 | Site stack | ✅ Astro, static HTML built in a GitHub Action (ADR-0002) | — |
 | O3 | How hosted pages get in | ✅ Snapshot from a recorded commit, placed under `fun/<page>/`; refuses a dirty source repo (ADR-0003) | — |
-| O4 | Content model | ✅ Entries as an Astro content collection (section, code, title, text, link) rendered into the Home sheet; hosted pages keep a separate record (source repo, commit, build command) | — |
+| O4 | Content model | ✅ Entries as an Astro content collection (section, order, title, text, link) rendered into the Home page; hosted pages keep a separate record (source repo, commit, build command) | — |
 | O5 | Design tokens | ✅ One tokens stylesheet, with a parity test against `DESIGN.md` (precedent: any-web-cloudflared slice 17) | — |
 | O6 | Checks before deploy | ✅ In the GitHub Action, before deploy: `DESIGN.md` lint, Astro build and type check, internal link check, page weight budget, every hosted-page record matches its folder. After deploy: live headers compared with the documented Cloudflare rules. Humanizer pass stays an agent step before commit | — |
 | O7 | Deploy and rollback | ✅ Astro's GitHub Pages workflow (`withastro/action` + `actions/deploy-pages`) on push to `master`; Pages source set to GitHub Actions; rollback by `git revert` | — |
-| O8 | Analytics | ✅ Cloudflare Web Analytics on the Home sheet only (cookieless); GA4 and GTM removed; never on hosted pages | — |
+| O8 | Analytics | ✅ Cloudflare Web Analytics on the Home page only (cookieless); GA4 and GTM removed; never on hosted pages | — |
 | O9 | Blog | ✅ Keep Hashnode at `blog.`; the Writing entry links the latest post until Teguh fixes the stale Hashnode About page (owner launch task, outside this repo) | — |
-| O10 | Vocabulary | ✅ Home sheet, Section, Entry, Hosted page, Snapshot, Source repo, Revision (`CONTEXT.md`) | — |
+| O10 | Vocabulary | ✅ Home page, Hero, Section, Entry, Hosted page, Snapshot, Source repo, Last changed line (`CONTEXT.md`) | — |
 
 ### Modules (shape depends on O2–O5)
-- **Site shell**: the drawing-sheet frame (title, sections, title block, revision table) shared by every owned page.
+- **Site shell**: the page frame (head, nav, footer) shared by every owned page.
 - **Content source**: where sections and entries are defined, separate from layout.
 - **Design tokens**: one source for colours, type and spacing, matched to `DESIGN.md`.
 - **Hosted-page intake**: takes a built folder from a source repo and places it under its path, with a
@@ -145,7 +143,7 @@ Highest zone: 🟡 Amber.
 
 - Brand, evidence and design principles live in Teguh's private notes; only the public-safe parts reach this repo.
 - Live site facts at intake: last changed 2024-03-02; GA4 and GTM both loaded; background image service returning 503.
-- The pilot already shows the Drawing Set works on real content and that Creative Toddler runs from a sub-path with relative assets.
+- Creative Toddler runs from a sub-path with relative assets.
 
 ## Reframe check (grill, 2026-10-31)
 

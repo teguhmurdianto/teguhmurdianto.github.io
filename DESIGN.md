@@ -1,100 +1,88 @@
 ---
 version: alpha
-name: Drawing Set
-description: tmurdianto.com as an engineer's drawing set. Off-white sheets, fine ink linework, a title block and revision table on every page, one blueprint-blue accent. Dark mode is the blueprint itself.
+name: Poster
+description: tmurdianto.com as a poster. A green field, one yellow band, very big type and a cut-out portrait with the text wrapping along its outline.
 colors:
-  primary: "#1F4E9C"
+  primary: "#0E4D3F"
   on-primary: "#FFFFFF"
-  neutral: "#F7F6F2"
-  surface: "#FFFFFF"
-  on-surface: "#1A1D21"
-  secondary: "#5A6270"
-  hairline: "#C9CDD2"
-  sheet-dark: "#0E2A52"
-  on-sheet-dark: "#EAF0F8"
-  accent-dark: "#9CC3FF"
-  hairline-dark: "#3D5C88"
-  paper-dark: "#0A1F3D"
-  secondary-dark: "#B4C3D8"
+  secondary: "#FFC900"
+  on-secondary: "#111111"
+  neutral: "#FFFFFF"
+  on-surface: "#111111"
+  surface-soft: "#F1F3EF"
+  neutral-dark: "#111111"
+  on-surface-dark: "#FFFFFF"
+  surface-soft-dark: "#23272A"
 typography:
-  headline-display: { fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif", fontSize: 40px, fontWeight: 600, lineHeight: 1.15, letterSpacing: -0.01em }
-  headline-md: { fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif", fontSize: 20px, fontWeight: 600, lineHeight: 1.3 }
-  body-md: { fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif", fontSize: 17px, fontWeight: 400, lineHeight: 1.6 }
-  label-md: { fontFamily: "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace", fontSize: 12px, fontWeight: 500, lineHeight: 1.4, letterSpacing: 0.08em }
+  headline-display: { fontFamily: "Archivo Black, sans-serif", fontSize: 72px, fontWeight: 400, lineHeight: 0.96, letterSpacing: -0.025em }
+  headline-md: { fontFamily: "Archivo Black, sans-serif", fontSize: 24px, fontWeight: 400, lineHeight: 1.1, letterSpacing: -0.01em }
+  body-md: { fontFamily: "Libre Franklin, sans-serif", fontSize: 17px, fontWeight: 400, lineHeight: 1.5 }
+  label-md: { fontFamily: "Libre Franklin, sans-serif", fontSize: 17px, fontWeight: 600, lineHeight: 1.4 }
 rounded: { none: 0px }
-spacing: { xs: 4px, sm: 8px, md: 16px, lg: 24px, xl: 48px }
+spacing: { xs: 6px, sm: 16px, md: 24px, lg: 48px, xl: 64px }
 components:
   page: { backgroundColor: "{colors.neutral}", textColor: "{colors.on-surface}", typography: "{typography.body-md}" }
-  sheet: { backgroundColor: "{colors.surface}", textColor: "{colors.on-surface}", rounded: "{rounded.none}", padding: 24px }
-  sheet-label: { backgroundColor: "{colors.surface}", textColor: "{colors.secondary}", typography: "{typography.label-md}" }
-  link: { backgroundColor: "{colors.surface}", textColor: "{colors.primary}" }
-  button-primary: { backgroundColor: "{colors.primary}", textColor: "{colors.on-primary}", typography: "{typography.label-md}", rounded: "{rounded.none}", padding: 12px }
-  divider: { backgroundColor: "{colors.hairline}", height: 1px }
-  page-dark: { backgroundColor: "{colors.sheet-dark}", textColor: "{colors.on-sheet-dark}" }
-  link-dark: { backgroundColor: "{colors.sheet-dark}", textColor: "{colors.accent-dark}" }
-  divider-dark: { backgroundColor: "{colors.hairline-dark}", height: 1px }
-  paper-dark: { backgroundColor: "{colors.paper-dark}", textColor: "{colors.on-sheet-dark}" }
-  sheet-label-dark: { backgroundColor: "{colors.sheet-dark}", textColor: "{colors.secondary-dark}", typography: "{typography.label-md}" }
+  hero: { backgroundColor: "{colors.primary}", textColor: "{colors.on-primary}", typography: "{typography.headline-display}" }
+  band: { backgroundColor: "{colors.secondary}", textColor: "{colors.on-secondary}", typography: "{typography.label-md}" }
+  block: { backgroundColor: "{colors.surface-soft}", textColor: "{colors.on-surface}", rounded: "{rounded.none}", padding: 24px }
+  block-sun: { backgroundColor: "{colors.secondary}", textColor: "{colors.on-secondary}", rounded: "{rounded.none}", padding: 24px }
+  block-green: { backgroundColor: "{colors.primary}", textColor: "{colors.on-primary}", rounded: "{rounded.none}", padding: 24px }
+  footer: { backgroundColor: "{colors.on-surface}", textColor: "{colors.on-primary}", typography: "{typography.label-md}" }
+  page-dark: { backgroundColor: "{colors.neutral-dark}", textColor: "{colors.on-surface-dark}" }
+  block-dark: { backgroundColor: "{colors.surface-soft-dark}", textColor: "{colors.on-surface-dark}", rounded: "{rounded.none}", padding: 24px }
 ---
 
 ## Overview
-The site is a bound set of construction drawings, because the brand is "I build the foundations teams
-depend on". Every page is a sheet in the same frame: a drawing title at the top, numbered sections, and a
-title block with a revision table at the bottom. It reads as calm, exact and dependable. Nothing on a sheet
-is decoration; if a mark doesn't carry information, it doesn't go on the sheet. The work leads; the person
-appears in the title block and one small figure.
+The site reads like a poster, because the brand is one sentence: "I build the foundations teams depend
+on." The Hero is one picture made of three things: the line, the band and the person. Everything below it
+is short and quiet. It stays on one page.
 
 Key characteristics:
-- One frame on every page. Nothing surprises.
-- Structure is visible: hairline rules, a faint grid, numbered sections.
-- One accent colour, used for links and marks only.
-- Works without JavaScript. System fonts only; nothing loaded from another origin except analytics.
+- One idea in the Hero: the person stands across both colours and the text follows their outline.
+- Very big type, one short sentence, no labels above it.
+- Two colours, green and yellow. Boldness is spent in the Hero.
+- Works without JavaScript. Fonts are served from this domain.
 
 ## Colors
-- **Blueprint blue** ({colors.primary}): the only accent. Links, the one primary action, section marks.
-  Never body text.
-- **Paper** ({colors.neutral}): the page floor behind the sheet, with a faint grid.
-- **Sheet** ({colors.surface}): the drawing sheet itself.
-- **Ink** ({colors.on-surface}): all text and the sheet border. **Graphite** ({colors.secondary}): labels,
-  dates and captions only.
-- **Hairline** ({colors.hairline}): 1px rules and the background grid.
-- **Dark mode** follows the device setting and turns the sheet into a blueprint: {colors.sheet-dark} sheet,
-  {colors.on-sheet-dark} linework and text, {colors.secondary-dark} labels, {colors.accent-dark} links,
-  {colors.hairline-dark} rules, on a {colors.paper-dark} floor.
+- **Green** ({colors.primary}): the Hero field and the Fun block. White text only.
+- **Yellow** ({colors.secondary}): the band and the Writing block. Ink text only.
+- **Ink** ({colors.on-surface}): body text and the footer.
+- **White** ({colors.neutral}): the page below the Hero. **Soft** ({colors.surface-soft}): Work blocks.
+- **Dark mode** follows the device setting. The Hero keeps its colours; the page turns to
+  {colors.neutral-dark} with {colors.surface-soft-dark} blocks.
 
 ## Typography
-Two families. The system sans for reading; a monospace in small capitals for every label, code and date,
-like the lettering on a drawing. Hierarchy comes from size, weight and the label lines, never from colour.
-{typography.headline-display} is used once per page, for the drawing title.
+Two families. Archivo Black for the headline and Entry titles, Libre Franklin for everything else. The
+headline scales with the screen so its line breaks hold on every phone. The nav and section headings are
+the same size as body text; weight separates them.
 
 ## Layout
-One sheet, max 880px wide, centred on the paper with {spacing.lg} around it (16px on phones). Sections stack
-in a single column, each opened by a label line such as `01 / ABOUT` and a hairline rule. Spacing follows
-the scale {spacing.xs} to {spacing.xl}; sections are separated by {spacing.xl}.
+The Hero has no fixed height. Its parts are sized from the screen width, so no gap can open between the
+headline and the portrait on any phone. Below it, one intro sentence, then Entries in a 12-column running
+bond: rows split 7 and 5, then 5 and 7, with a 6px gap. On phones the blocks stack.
 
 ## Elevation & Depth
-Flat. The sheet sits on the paper with a 1px ink border, never a shadow. Depth is shown by the frame and
-rules only.
+Flat. The one exception is the portrait's white outline, which cleans its cut edge against both colours.
 
 ## Shapes
-Square corners everywhere ({rounded.none}). Drawings don't round their frames.
+Square corners everywhere ({rounded.none}). The only curve on the page is the person.
 
 ## Components
-- **page**: paper floor with a faint hairline grid.
-- **sheet**: the white drawing area with a 1px ink border.
-- **sheet-label**: monospace small-capital labels: section numbers, codes like `W-01`, dates, figure captions.
-- **link**: blueprint blue, underlined on hover and focus.
-- **button-primary**: square, filled blueprint blue; at most one per page.
-- **divider**: a 1px hairline rule under each section label.
-- **page-dark**, **paper-dark**, **sheet-label-dark**, **link-dark**, **divider-dark**: the same parts in blueprint mode.
-- **Title block** (structure, not a token): a bordered grid at the foot of every sheet holding name,
-  location, contact links and the revision table (`REV`, `DATE`, `NOTE`).
-- **Hosted pages** under `/fun/` and similar keep their own look. The home sheet links to them; it does not
+- **hero**: the green field with the nav, the headline and the portrait.
+- **band**: the yellow field holding the About sentence, running behind the portrait.
+- **Portrait** (structure, not a token): a greyscale cut-out floated right. Text wraps along its outline
+  with `shape-outside`, and the whole figure stays inside the page. It uses the image's transparent
+  right margin, never a negative margin, because the shape stretches to the image's margin box.
+- **block**, **block-sun**, **block-green**: Entries in the running bond.
+- **footer**: ink strip with a plain contact line, email and profile links, and the Version line.
+- **page-dark**, **block-dark**: the page below the Hero in dark mode.
+- **Hosted pages** under `/fun/` and similar keep their own look. The Home page links to them; it does not
   restyle them.
 
 ## Do's and Don'ts
-- Do date every page in its revision table when it changes.
-- Do number sections and give work items a code (`W-01`).
-- Don't add gradients, glows, shadows, rounded cards or stock imagery.
-- Don't use more than one accent colour, or colour body text.
+- Do let the text touch the figure's outline.
+- Do check every Hero change at 320, 375, 430, 985 and 1280 px.
+- Don't crop the figure's arms to gain room for text.
+- Don't add labels above the headline, section numbers, gradients, rounded cards or stock imagery.
+- Don't add a third colour, or put white text on yellow.
 - Don't load fonts or scripts from other origins (analytics is the one exception).

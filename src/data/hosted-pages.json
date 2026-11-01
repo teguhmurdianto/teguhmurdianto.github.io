@@ -1,0 +1,8 @@
+[
+  {
+    "path": "fun/creative-toddler",
+    "source": "creative-toddler",
+    "commit": "40b9b09229da4ac766ece5ceacc4d14a33067be3",
+    "build": "npm ci && npm run build"
+  }
+]

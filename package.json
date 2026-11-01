@@ -1,0 +1,37 @@
+{
+  "name": "tmurdianto-com",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro build && astro preview",
+    "test": "vitest run",
+    "check:design": "design.md lint DESIGN.md",
+    "check:types": "astro check",
+    "check:links": "astro build && node scripts/check-site.ts links",
+    "check:weight": "astro build && node scripts/check-site.ts weight",
+    "check": "npm run check:design && npm run check:types && npm run check:hosted && npm run check:links && npm run check:weight && npm test",
+    "check:hosted": "node scripts/check-site.ts hosted",
+    "check:headers": "node scripts/check-site.ts headers",
+    "check:analytics": "node scripts/check-site.ts analytics",
+    "hosted:add": "node scripts/intake.ts add",
+    "hosted:remove": "node scripts/intake.ts remove"
+  },
+  "dependencies": {
+    "@fontsource/archivo-black": "^5.3.0",
+    "@fontsource/libre-franklin": "^5.3.0",
+    "astro": "^7.4.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@google/design.md": "^0.4.0",
+    "@types/node": "^24.19.2",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.5",
+    "yaml": "^2.9.1"
+  }
+}

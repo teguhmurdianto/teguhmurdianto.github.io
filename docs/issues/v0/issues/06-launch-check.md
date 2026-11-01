@@ -12,7 +12,7 @@ Check the live site as a visitor would and close the launch tasks. The Writing e
 
 ## Acceptance criteria
 
-- [ ] The live Home sheet, 404 and Creative Toddler work on a phone in light and dark mode
+- [ ] The live Home page, 404 and Creative Toddler work on a phone in light and dark mode
 - [ ] Every contact link opens the right profile
 - [ ] The Writing entry links to the latest post
 - [ ] Owner task recorded: fix the stale Hashnode About page (title and years)
@@ -21,3 +21,4 @@ Check the live site as a visitor would and close the launch tasks. The Writing e
 ## Blocked by
 
 - `01-home-sheet-live-on-astro.md` … `05-cloudflare-web-analytics.md`
+- `07-poster-design-on-the-home-page.md`
