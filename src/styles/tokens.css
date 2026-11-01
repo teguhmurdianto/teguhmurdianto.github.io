@@ -1,0 +1,23 @@
+/* Tokens follow DESIGN.md; tests/tokens-parity.test.ts fails if they drift. Dark mode turns the page below the Hero dark; the Hero keeps its colours. */
+:root {
+  --primary: #0E4D3F;
+  --on-primary: #FFFFFF;
+  --secondary: #FFC900;
+  --on-secondary: #111111;
+  --surface: #FFFFFF;
+  --on-surface: #111111;
+  --surface-soft: #F1F3EF;
+  /* The footer background: near-black in both colour schemes, so it does not follow --on-surface. */
+  --footer-bg: #111111;
+  --display: "Archivo Black", sans-serif;
+  --text: "Libre Franklin", sans-serif;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #111111;
+    --on-surface: #FFFFFF;
+    --surface-soft: #23272A;
+  }
+}

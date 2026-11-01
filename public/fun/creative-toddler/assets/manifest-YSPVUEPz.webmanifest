@@ -1,0 +1,14 @@
+{
+  "name": "Creative Toddler",
+  "short_name": "Creative Toddler",
+  "description": "A gentle, ad-free creative playground for little hands.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#FFF3D6",
+  "theme_color": "#FFF3D6",
+  "icons": [
+    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

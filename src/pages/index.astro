@@ -1,0 +1,54 @@
+---
+import { getCollection, render } from 'astro:content';
+import Page from '../layouts/Page.astro';
+import { groups } from '../data/sections';
+
+const entries = (await getCollection('entries')).sort((a, b) => a.data.order - b.data.order);
+const listed = await Promise.all(
+  entries.map(async (entry) => ({ entry, Text: (await render(entry)).Content })),
+);
+
+// A running bond: rows alternate wide and narrow, shifting by one each row.
+const wide = (index: number) => (Math.floor(index / 2) + (index % 2)) % 2 === 0;
+---
+
+<Page
+  analytics
+  title="Teguh Murdianto"
+  description="I build the foundations teams depend on: structure, standards and tools that keep a team's work consistent, whatever the stack."
+>
+  <header class="hero">
+    <div class="bar">
+      <span>Teguh Murdianto</span>
+      <a href="mailto:murdianto1561@gmail.com">Email me</a>
+    </div>
+    <div class="flow">
+      <span class="spacer" aria-hidden="true"></span>
+      <img src="/portrait.webp" width="412" height="549" alt="Portrait of Teguh Murdianto" />
+      <h1>I build the foundations teams depend on.</h1>
+      <p>I've spent 14 years building enterprise systems, and I make the structure that keeps a team's work consistent, whatever the stack.</p>
+    </div>
+  </header>
+
+  <main>
+    <p class="intro">
+      I make what other people build on: project seeds, templates, written decisions and tools.
+      The standards belong to the team. I build the ground they stand on.
+    </p>
+
+    {groups.map(({ id, heading, sections }) => {
+      const items = listed.filter(({ entry }) => sections.includes(entry.data.section));
+      return (
+        <section class="wall" aria-labelledby={id}>
+          <h2 id={id}>{heading}</h2>
+          {items.map(({ entry, Text }, index) => (
+            <article class:list={['entry', wide(index) ? 'wide' : 'narrow']} data-section={entry.data.section}>
+              <h3>{entry.data.link ? <a href={entry.data.link}>{entry.data.title}</a> : entry.data.title}</h3>
+              <Text />
+            </article>
+          ))}
+        </section>
+      );
+    })}
+  </main>
+</Page>

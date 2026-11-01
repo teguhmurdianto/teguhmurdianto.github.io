@@ -1,0 +1,54 @@
+---
+import '../styles/tokens.css';
+import '../styles/site.css';
+import { beaconOrigin, beaconReportOrigin, beaconToken } from '../data/analytics';
+import { resolveVersion } from '../data/version';
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;
+  analytics?: boolean;
+}
+
+const { title, description, path = '/', analytics = false } = Astro.props;
+const canonical = new URL(path, Astro.site).href;
+const base = "default-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'";
+const policy = analytics
+  ? `${base}; script-src ${beaconOrigin}; connect-src 'self' ${beaconReportOrigin}`
+  : `${base}; script-src 'none'`;
+const version = resolveVersion(process.env.GITHUB_SHA);
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content={policy} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Teguh Murdianto" />
+    <meta name="theme-color" content="#0E4D3F" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0E4D3F" media="(prefers-color-scheme: dark)" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href={canonical} />
+  </head>
+  <body>
+    <slot />
+    <footer>
+      <p>You can reach me by email, on LinkedIn, GitHub or GitLab.</p>
+      <nav class="links" aria-label="Contact">
+        <a href="mailto:murdianto1561@gmail.com">Email me</a>
+        <a href="https://www.linkedin.com/in/teguh-murdianto">LinkedIn</a>
+        <a href="https://github.com/teguhmurdianto">GitHub</a>
+        <a href="https://gitlab.com/teguhmurdianto">GitLab</a>
+      </nav>
+      <p>Version {version}</p>
+    </footer>
+    {analytics && <script type="module" src={`${beaconOrigin}/beacon.min.js`} data-cf-beacon={JSON.stringify({ token: beaconToken })} is:inline />}
+  </body>
+</html>
